@@ -36,3 +36,5 @@ $arr2 = [4, 5, 6];
 $resultArray = array_merge($arr1, $arr2);
 echo join(' ', $resultArray);
 ?>
+
+<br>

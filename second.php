@@ -3,28 +3,28 @@
 <?php
 $firstWord = "cat";
 $secondWord = "tank";
-$lastChar = substr($firstWord, -1);
-$firstChar = substr($secondWord, 0);
+$lastChar = substr($firstWord, -1, 1);
+$firstChar = substr($secondWord, 0, 1);
 if ($lastChar == $firstChar) {
     echo 'yes';
 } else {
     echo 'no';
-}; // неправильно работает
+};
 ?>
 
 <br>
 
 <?php
 $string = "201250420430503";
+$zeroCounter = 0;
 for ($i = 0; $i < strlen($string); $i++) {
-    $zeroCounter = 0;
-    if ($i == 0) {
+    if ($string[$i] == 0) {
         $zeroCounter++;
     }
     if ($zeroCounter == 3) {
         echo $i;
     }
-} // вообще какого то хуя не работает
+}
 ?>
 
 <br>
@@ -32,7 +32,11 @@ for ($i = 0; $i < strlen($string); $i++) {
 <?php
 $nums = '12,34,56';
 $numsArray = explode(',', $nums);
-//  не ебу пока чо дальше
+$result = 0;
+foreach ($numsArray as $num) {
+	$result += $num;
+}
+echo $result;
 ?>
 
 <br>
@@ -41,6 +45,9 @@ $numsArray = explode(',', $nums);
 $date = '2025-12-31';
 $dateArr = explode('-', $date);
 $resArr = ['year' => $dateArr[0], 'month' => $dateArr[1], 'day' => $dateArr[2]];
-echo join("\n", $resArr);
+print_r($resArr);
 // хз оно не оно, по выводу не оно но вроде оно
+
 ?>
+
+<br>
