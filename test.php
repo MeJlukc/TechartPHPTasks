@@ -2,24 +2,26 @@
     <?php
     $length = $_POST['length'] ?? 0;
     $useDigits = $_POST['useDigits'] ?? 0;
-    $useUppercase = $_POST['useUpperCase'] ?? 0;
+    $useUpperCase = $_POST['useUpperCase'] ?? 0;
     $useSpecialSymbols = $_POST['useSpecialSymbols'] ?? 0;
 
     $digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    $uppercaseLetters = str_split("QWERTYUIOPASDFGHJKLZXCVBNM");
+    $upperCaseLetters = str_split("QWERTYUIOPASDFGHJKLZXCVBNM");
     $specialSymbols = str_split("!@#$%^&*()-_=+[]{}<>?");
 
-    $availableSymbols = [str_split("qwertyuiopasdfghjklzxcvbnm")];
+    $availableSymbols = str_split("qwertyuiopasdfghjklzxcvbnm");
 
     if ($useDigits) {
         $availableSymbols[] = array_merge($availableSymbols, $digits);
     }
-    if ($useUppercase) {
-        $availableSymbols[] = array_merge($availableSymbols, $uppercaseLetters);
+    if ($useUpperCase) {
+        $availableSymbols[] = array_merge($availableSymbols, $upperCaseLetters);
     }
     if ($useSpecialSymbols) {
         $availableSymbols[] = array_merge($availableSymbols, $specialSymbols);
     }
+
+    print_r($availableSymbols);
 
     $preResult = [];
 
@@ -29,7 +31,7 @@
     } else {
         for ($i = 0; $i < $length; $i++) {
             $randomIndex = random_int(0, count($availableSymbols) - 1);
-            $preResult[] = array_merge($preResult, $availableSymbols[$randomIndex]);
+            $preResult[] = $availableSymbols[$randomIndex];
         }
         $result = join('', $preResult);
     }
